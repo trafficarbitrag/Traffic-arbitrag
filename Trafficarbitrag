@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>جارٍ التوجيه...</title>
+  <script>
+    // --- رابط موقعك الأساسي ---
+    const finalDestination = "https://fyytgtyfgg.blogspot.com/?m=1";
+
+    // --- أنماط مختلفة للنسب ---
+    const patterns = [
+      [
+        {url: "https://facebook.com", weight: 40},
+        {url: "https://instagram.com", weight: 20},
+        {url: "https://reddit.com", weight: 15},
+        {url: "https://example.com", weight: 10},
+        {url: "https://google.com/search?q=keyword", weight: 15}
+      ],
+      [
+        {url: "https://facebook.com", weight: 30},
+        {url: "https://instagram.com", weight: 25},
+        {url: "https://reddit.com", weight: 20},
+        {url: "https://example.com", weight: 10},
+        {url: "https://google.com/search?q=keyword", weight: 15}
+      ],
+      [
+        {url: "https://facebook.com", weight: 20},
+        {url: "https://instagram.com", weight: 30},
+        {url: "https://reddit.com", weight: 25},
+        {url: "https://example.com", weight: 10},
+        {url: "https://google.com/search?q=keyword", weight: 15}
+      ],
+      [
+        {url: "https://facebook.com", weight: 25},
+        {url: "https://instagram.com", weight: 20},
+        {url: "https://reddit.com", weight: 30},
+        {url: "https://example.com", weight: 10},
+        {url: "https://google.com/search?q=keyword", weight: 15}
+      ]
+    ];
+
+    // --- اختيار نمط عشوائي ---
+    const sources = patterns[Math.floor(Math.random() * patterns.length)];
+
+    // --- اختيار رابط بحسب الوزن ---
+    function pickRandom() {
+      let total = sources.reduce((sum, s) => sum + s.weight, 0);
+      let rand = Math.random() * total;
+      for (let s of sources) {
+        if (rand < s.weight) return s.url;
+        rand -= s.weight;
+      }
+    }
+
+    // --- التوجيه ---
+    setTimeout(() => {
+      const fakeSource = pickRandom();
+      // أولاً يفتح المصدر الوهمي
+      window.location.href = finalDestination;
+    }, 2000);
+  </script>
+</head>
+<body>
+  <h1>جارٍ التوجيه... 🚀</h1>
+</body>
+</html>
